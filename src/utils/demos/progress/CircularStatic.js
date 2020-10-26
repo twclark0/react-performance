@@ -1,0 +1,75 @@
+import CircularProgress from "@material-ui/core/CircularProgress";
+import PropTypes from "prop-types";
+import React from "react";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  progress: {
+    margin: theme.spacing(1) * 2
+  }
+});
+
+class CircularStatic extends React.Component {
+  timer = null;
+
+  state = {
+    completed: 0
+  };
+
+  componentDidMount() {
+    this.timer = setInterval(this.progress, 1000);
+  }
+
+  UNSAFE_componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
+  progress = () => {
+    const { completed } = this.state;
+    this.setState({ completed: completed >= 100 ? 0 : completed + 10 });
+  };
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <div>
+        <CircularProgress
+          className={classes.progress}
+          variant="static"
+          value={5}
+        />
+        <CircularProgress
+          className={classes.progress}
+          variant="static"
+          value={25}
+        />
+        <CircularProgress
+          className={classes.progress}
+          variant="static"
+          value={50}
+        />
+        <CircularProgress
+          className={classes.progress}
+          variant="static"
+          value={75}
+        />
+        <CircularProgress
+          className={classes.progress}
+          variant="static"
+          value={100}
+        />
+        <CircularProgress
+          className={classes.progress}
+          variant="static"
+          value={this.state.completed}
+        />
+      </div>
+    );
+  }
+}
+
+CircularStatic.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(CircularStatic);

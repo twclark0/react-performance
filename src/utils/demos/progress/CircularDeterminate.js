@@ -1,0 +1,69 @@
+import CircularProgress from "@material-ui/core/CircularProgress";
+import PropTypes from "prop-types";
+import React from "react";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  progress: {
+    margin: theme.spacing(1) * 2
+  }
+});
+
+class CircularDeterminate extends React.Component {
+  timer = null;
+
+  state = {
+    completed: 0
+  };
+
+  componentDidMount() {
+    this.timer = setInterval(this.progress, 20);
+  }
+
+  UNSAFE_componentWillMount() {
+    clearInterval(this.timer);
+  }
+
+  progress = () => {
+    const { completed } = this.state;
+    this.setState({ completed: completed >= 100 ? 0 : completed + 1 });
+  };
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <div>
+        <CircularProgress
+          className={classes.progress}
+          variant="determinate"
+          value={this.state.completed}
+        />
+        <CircularProgress
+          className={classes.progress}
+          variant="determinate"
+          size={50}
+          value={this.state.completed}
+        />
+        <CircularProgress
+          className={classes.progress}
+          color="secondary"
+          variant="determinate"
+          value={this.state.completed}
+        />
+        <CircularProgress
+          className={classes.progress}
+          color="secondary"
+          variant="determinate"
+          size={50}
+          value={this.state.completed}
+        />
+      </div>
+    );
+  }
+}
+
+CircularDeterminate.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(CircularDeterminate);
