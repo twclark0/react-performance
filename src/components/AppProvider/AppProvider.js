@@ -15,14 +15,16 @@ const { Provider } = Context;
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "direction":
+    case "DIRECTION":
       const newState = {
         ...state,
         direction: state.direction === "ltr" ? "rtl" : "ltr"
       };
       return newState;
-    case "type":
+    case "MODE":
       return { ...state, type: state.type === "light" ? "dark" : "light" };
+    case "UPDATE_DATA":
+      return { ...state, data: action.data };
     default:
       return state;
   }
@@ -32,7 +34,8 @@ const AppProvider = ({ children }) => {
   const prefersDarkMode = useMediaQuery("@media (prefers-color-scheme: dark)");
   const [state, dispatch] = useReducer(reducer, {
     type: prefersDarkMode ? "dark" : "light",
-    direction: "ltr"
+    direction: "ltr",
+    data: []
   });
 
   const theme = createMuiTheme({

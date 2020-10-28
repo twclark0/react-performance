@@ -158,7 +158,6 @@ const Dashboard = ({ history }) => {
       });
     };
   });
-
   return (
     <>
       <Header
@@ -196,7 +195,7 @@ const Dashboard = ({ history }) => {
           <SpeedDialAction
             icon={<WbSunnyIcon />}
             tooltipTitle="Toggle light/dark theme"
-            onClick={() => dispatch({ type: "type" })}
+            onClick={() => dispatch({ type: "MODE" })}
           />
           <SpeedDialAction
             icon={
@@ -207,7 +206,7 @@ const Dashboard = ({ history }) => {
               )
             }
             tooltipTitle="Toggle LTR/RTL direction"
-            onClick={() => dispatch({ type: "direction" })}
+            onClick={() => dispatch({ type: "DIRECTION" })}
           />
         </SpeedDial>
       </Hidden>

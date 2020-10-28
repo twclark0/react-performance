@@ -22,6 +22,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import Toolbar from "@material-ui/core/Toolbar";
 import classNames from "classnames";
 import { makeStyles } from "@material-ui/core/styles";
+import { useAppState } from "../../components/AppProvider/AppProvider";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -96,23 +97,29 @@ const Header = ({
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [searchExpanded, setSearchExpanded] = useState(false);
-
+  /* eslint-disable no-unused-vars */
+  const [state, dispatch] = useAppState();
   const handleSettingdToggle = (event) => setAnchorEl(event.currentTarget);
 
   const handleCloseMenu = () => setAnchorEl(null);
 
   const handleSearchExpandToggle = () => setSearchExpanded(!searchExpanded);
 
+  const handleChange = (e) => {
+    fetch("https://swapi.dev/api/people/")
+      .then((e) => e.json())
+      .then((r) => {
+        dispatch({ data: r.results, type: "UPDATE_DATA" });
+      });
+  };
   const handleDrawerToggle = () => {
     toggleDrawer();
     if (searchExpanded) handleSearchExpandToggle();
   };
-
   const handleNotificationToggle = () => {
     toogleNotifications();
     if (searchExpanded) handleSearchExpandToggle();
   };
-
   return (
     <AppBar position="static" className={classes.appBar}>
       <Toolbar className={classes.toolBar}>
@@ -139,6 +146,7 @@ const Header = ({
                 type="text"
                 placeholder="Search"
                 autoFocus={true}
+                onChange={handleChange}
               />
             </form>
           </div>
