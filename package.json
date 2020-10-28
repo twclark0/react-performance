@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "concurrently": "5.1.0"
+    "concurrently": "5.1.0",
+    "css-minimizer-webpack-plugin": "^1.1.5"
   },
   "homepage": "/",
   "dependencies": {
