@@ -88,9 +88,10 @@ const Products = () => {
         ...mockProduct()
       });
     };
-
-    for (let num = 1; num <= 21; num += 1) {
-      addProducts(num);
+    for (let i = 1; i <= 9; i += 1) {
+      for (let num = 1; num <= 21; num += 1) {
+        addProducts(num);
+      }
     }
 
     setProducts(mockProducts);
