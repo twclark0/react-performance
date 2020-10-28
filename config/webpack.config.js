@@ -3,6 +3,8 @@
 const fs = require("fs");
 const path = require("path");
 const webpack = require("webpack");
+// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+//   .BundleAnalyzerPlugin;
 const resolve = require("resolve");
 const PnpWebpackPlugin = require("pnp-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -446,6 +448,7 @@ module.exports = function (webpackEnv) {
       ]
     },
     plugins: [
+      // new BundleAnalyzerPlugin(),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(

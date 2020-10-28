@@ -16,6 +16,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import routes from "../routes";
 import { useAppState } from "../components/AppProvider/AppProvider";
 import useMountEffect from "../mountEffect";
+// Tree shaking and working out modules lesson
+// import lodash from "lodash";
+// console.log(lodash.isEqual({}, {}));
 
 const useStyles = makeStyles((theme) => ({
   panel: {
@@ -53,7 +56,6 @@ const Dashboard = ({ history }) => {
   const [opened, setOpened] = useState(true);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [openSpeedDial, setOpenSpeedDial] = useState(false);
-
   const mediaMatcher = matchMedia(`(max-width: ${MobileBreakpoint}px)`);
 
   const resizeDispatch = () => {
