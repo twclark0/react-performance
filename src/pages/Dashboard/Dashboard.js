@@ -19,7 +19,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MoreIcon from "@material-ui/icons/More";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import NotificationsOffIcon from "@material-ui/icons/NotificationsOff";
 import Paper from "@material-ui/core/Paper";
 import PhoneIcon from "@material-ui/icons/Phone";
 import SettingsIcon from "@material-ui/icons/Settings";
@@ -73,12 +72,6 @@ const Home = () => {
           <MoreIcon />
         </ListItemIcon>
         <ListItemText primary="View more" />
-      </MenuItem>
-      <MenuItem onClick={handleClose}>
-        <ListItemIcon>
-          <NotificationsOffIcon />
-        </ListItemIcon>
-        <ListItemText primary="Disable notifications" />
       </MenuItem>
       <MenuItem onClick={handleClose}>
         <ListItemIcon>

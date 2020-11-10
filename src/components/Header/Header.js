@@ -15,7 +15,6 @@ import MenuIcon from "@material-ui/icons/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import NotificationsOffIcon from "@material-ui/icons/NotificationsOff";
 import PropTypes from "prop-types";
 import SearchIcon from "@material-ui/icons/Search";
 import SettingsIcon from "@material-ui/icons/Settings";
@@ -206,12 +205,6 @@ const Header = ({
               <AccountBoxIcon />
             </ListItemIcon>
             <ListItemText primary="Profile" />
-          </MenuItem>
-          <MenuItem onClick={handleCloseMenu}>
-            <ListItemIcon>
-              <NotificationsOffIcon />
-            </ListItemIcon>
-            <ListItemText primary="Disable notifications" />
           </MenuItem>
           <MenuItem onClick={handleCloseMenu}>
             <ListItemIcon>
