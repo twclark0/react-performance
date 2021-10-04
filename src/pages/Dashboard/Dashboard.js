@@ -28,7 +28,6 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { Typography } from "@material-ui/core";
-import useMousePosition from "../../hooks/useMouse";
 
 let id = 0;
 function createData(name, date, progress) {
@@ -50,9 +49,6 @@ const Home = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
-  const { x, y } = useMousePosition();
-  /* eslint-disable no-unused-vars */
-  const hasMovedCursor = typeof x === "number" && typeof y === "number";
 
   const chartMenu = (
     <Menu
@@ -87,13 +83,6 @@ const Home = () => {
       <Typography style={{ margin: "20px 0" }} variant="h4">
         Dashboard
       </Typography>
-
-      {/* Debounce lesson
-      <p>
-    {hasMovedCursor
-      ? `Your cursor is at ${x}, ${y}.`
-      : "Move your mouse around."}
-  </p> */}
       <Grid container spacing={1}>
         <Grid item xs={12} sm={6} md={3}>
           <StatCard
