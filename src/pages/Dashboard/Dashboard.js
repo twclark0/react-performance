@@ -49,6 +49,8 @@ const Home = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
+  const duplicateItems = (arr, numberOfRepetitions) =>
+    arr.flatMap((i) => Array.from({ length: numberOfRepetitions }).fill(i));
 
   const chartMenu = (
     <Menu
@@ -183,7 +185,10 @@ const Home = () => {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={12} md={12}>
-          <NewsCard subtitle="Last updated 24 mins ago" feed={mockFeed} />
+          <NewsCard
+            subtitle="Last updated 24 mins ago"
+            feed={duplicateItems(mockFeed, 1000)}
+          />
         </Grid>
       </Grid>
     </Wrapper>

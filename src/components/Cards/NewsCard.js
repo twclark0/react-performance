@@ -1,5 +1,6 @@
 import Avatar from "@material-ui/core/Avatar";
 import Card from "@material-ui/core/Card";
+import { FixedSizeList } from "react-window";
 import CardHeader from "@material-ui/core/CardHeader";
 import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
@@ -19,12 +20,45 @@ const useStyles = makeStyles((theme) => ({
 
 const NewsCard = ({ feed, subtitle }) => {
   const classes = useStyles();
+
+  const Row = ({ index, style }) => (
+    <ListItem key={index} style={style}>
+      {feed[index].avatar ? (
+        feed[index].avatar
+      ) : (
+        <Avatar>{feed[index].subject.charAt(0)}</Avatar>
+      )}
+      <ListItemText
+        primary={feed[index].subject}
+        secondary={feed[index].message}
+        inset
+        classes={{
+          primary: classes.textEllipsis,
+          secondary: classes.textEllipsis
+        }}
+      />
+    </ListItem>
+  );
+
+  const Example = () => (
+    <FixedSizeList
+      height={350}
+      itemCount={4000}
+      itemSize={60}
+      width="100%"
+      itemData={feed}
+    >
+      {Row}
+    </FixedSizeList>
+  );
+
   return (
     <Card>
       <CardHeader title="Reviews " subheader={subtitle} />
       <Divider />
+      <Example />
       <List>
-        {feed.map((item, index) => (
+        {/* {feed.map((item, index) => (
           <ListItem key={index}>
             {item.avatar ? (
               item.avatar
@@ -41,7 +75,7 @@ const NewsCard = ({ feed, subtitle }) => {
               }}
             />
           </ListItem>
-        ))}
+        ))} */}
       </List>
     </Card>
   );
