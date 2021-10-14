@@ -55,8 +55,8 @@ const Dashboard = ({ history }) => {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [openSpeedDial, setOpenSpeedDial] = useState(false);
   const mediaMatcher = matchMedia(`(max-width: ${MobileBreakpoint}px)`);
-  const { x, y } = useMousePosition();
-  console.log(`Here are the coordinates ${x} ${y}`);
+  // const { x, y } = useMousePosition();
+  // console.log(`Here are the coordinates ${x} ${y}`);
 
   const resizeDispatch = () => {
     if (typeof Event === "function") {

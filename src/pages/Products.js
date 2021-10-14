@@ -78,6 +78,7 @@ const Products = () => {
   const classes = useStyles();
   const [opened, setOpened] = useState(false);
   const [products, setProducts] = useState([]);
+  const [buttonClicked, setButtonClicked] = useState(false);
 
   useEffect(() => {
     let mockProducts = [];
@@ -122,6 +123,9 @@ const Products = () => {
           <Typography style={{ margin: "20px 0" }} variant="h4">
             Products
           </Typography>
+          <button onClick={() => setButtonClicked(!buttonClicked)}>
+            {buttonClicked ? "Change text" : "State changed"}
+          </button>
           <Grid container spacing={1}>
             {products.map((product, index) => (
               <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
