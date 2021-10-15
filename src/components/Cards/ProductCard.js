@@ -132,93 +132,95 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ProductCard = React.memo(
-  ({ id, name, price, description, sale, discounted, discount }) => {
-    const classes = useStyles();
-    console.log("ProductCard Rendered!");
-    return (
-      <Card>
-        <div className={classes.mediaGrid}>
-          <figure className={classes.figure}>
-            {sale && (
-              <div className={classes.badge}>
-                <Typography className={classes.badgeText}>Sale</Typography>
-              </div>
-            )}
-            <img
-              alt={name}
-              src={`${process.env.PUBLIC_URL}/static/images/unsplash/${id}.jpg`}
-              className={classes.figureImg}
-            />
-            <figcaption className={classes.caption}>
-              <p className={classes.paragraph}>
-                <IconButton
-                  className={classes.captionAnchor}
-                  aria-label="Add to cart"
-                >
-                  <ShoppingBasketIcon />
-                </IconButton>
+const ProductCard = ({
+  id,
+  name,
+  price,
+  description,
+  sale,
+  discounted,
+  discount
+}) => {
+  const classes = useStyles();
+  return (
+    <Card>
+      <div className={classes.mediaGrid}>
+        <figure className={classes.figure}>
+          {sale && (
+            <div className={classes.badge}>
+              <Typography className={classes.badgeText}>Sale</Typography>
+            </div>
+          )}
+          <img
+            alt={name}
+            src={`${process.env.PUBLIC_URL}/static/images/unsplash/${id}.jpg`}
+            className={classes.figureImg}
+          />
+          <figcaption className={classes.caption}>
+            <p className={classes.paragraph}>
+              <IconButton
+                className={classes.captionAnchor}
+                aria-label="Add to cart"
+              >
+                <ShoppingBasketIcon />
+              </IconButton>
 
-                <IconButton
-                  className={classes.captionAnchor}
-                  aria-label="Favourite"
-                >
-                  <FavoriteIcon />
-                </IconButton>
+              <IconButton
+                className={classes.captionAnchor}
+                aria-label="Favourite"
+              >
+                <FavoriteIcon />
+              </IconButton>
 
-                <IconButton
-                  className={classes.captionAnchor}
-                  aria-label="Share"
-                >
-                  <ShareIcon />
-                </IconButton>
+              <IconButton className={classes.captionAnchor} aria-label="Share">
+                <ShareIcon />
+              </IconButton>
 
-                <IconButton
-                  className={classes.captionAnchor}
-                  aria-label="Bookmark"
-                >
-                  <BookmarkIcon />
-                </IconButton>
-              </p>
-            </figcaption>
-          </figure>
-        </div>
-        <CardContent className="pa-1">
-          <Grid
-            container
-            spacing={0}
-            direction="row"
-            justify="space-between"
-            alignItems="center"
-          >
-            <Grid item>
-              <Typography>{name}</Typography>
-              <Typography variant="caption">{description}</Typography>
-            </Grid>
-            <Grid
-              item
-              className={classNames(classes.price, "mat-text-primary text-xl")}
-            >
-              {discounted && (
-                <Typography
-                  variant="caption"
-                  className="strikethrough"
-                  component="span"
-                >
-                  {formatPrice(discount)}
-                </Typography>
-              )}
-              <Typography variant="h6" className={classes.mainPrice}>
-                {" "}
-                {formatPrice(price)}
-              </Typography>
-            </Grid>
+              <IconButton
+                className={classes.captionAnchor}
+                aria-label="Bookmark"
+              >
+                <BookmarkIcon />
+              </IconButton>
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+      <CardContent className="pa-1">
+        <Grid
+          container
+          spacing={0}
+          direction="row"
+          justify="space-between"
+          alignItems="center"
+        >
+          <Grid item>
+            <Typography>{name}</Typography>
+            <Typography variant="caption">{description}</Typography>
           </Grid>
-        </CardContent>
-      </Card>
-    );
-  }
-);
+          <Grid
+            item
+            className={classNames(classes.price, "mat-text-primary text-xl")}
+          >
+            {discounted && (
+              <Typography
+                variant="caption"
+                className="strikethrough"
+                component="span"
+              >
+                {formatPrice(discount)}
+              </Typography>
+            )}
+            <Typography variant="h6" className={classes.mainPrice}>
+              {" "}
+              {formatPrice(price)}
+            </Typography>
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
+  );
+};
 
 ProductCard.propTypes = {
   id: PropTypes.number,
@@ -230,4 +232,4 @@ ProductCard.propTypes = {
   discount: PropTypes.number
 };
 
-export default ProductCard;
+export default React.memo(ProductCard);

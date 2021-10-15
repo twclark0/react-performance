@@ -1,6 +1,6 @@
 import { ProductCard, Wrapper } from "../components";
 import React, { useEffect, useState } from "react";
-
+import "./wdyr";
 import AppBar from "@material-ui/core/AppBar";
 import Grid from "@material-ui/core/Grid";
 import Hidden from "@material-ui/core/Hidden";
@@ -79,7 +79,7 @@ const Products = () => {
   const [opened, setOpened] = useState(false);
   const [products, setProducts] = useState([]);
   const [buttonClicked, setButtonClicked] = useState(false);
-
+  const memoStyle = React.useMemo(() => ({ background: "red" }), []);
   useEffect(() => {
     let mockProducts = [];
 
@@ -130,6 +130,7 @@ const Products = () => {
             {products.map((product, index) => (
               <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
                 <ProductCard
+                  style={memoStyle}
                   id={product.id}
                   name={product.name}
                   price={product.price}
