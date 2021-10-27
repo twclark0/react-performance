@@ -1,6 +1,6 @@
 import { Header, NotificationCenter, Sidebar, Workspace } from "../components";
 import React, { useState } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import FormatTextdirectionLToRIcon from "@material-ui/icons/FormatTextdirectionLToR";
 import FormatTextdirectionRToLIcon from "@material-ui/icons/FormatTextdirectionRToL";
@@ -16,7 +16,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import routes from "../routes";
 import { useAppState } from "../components/AppProvider/AppProvider";
 import useMountEffect from "../mountEffect";
-import useMousePosition from "../hooks/useMouse";
+// import useMousePosition from "../hooks/useMouse";
 
 const useStyles = makeStyles((theme) => ({
   panel: {
@@ -104,35 +104,15 @@ const Dashboard = ({ history }) => {
 
   const getRoutes = (
     <Switch>
-      {routes.items.map((item, index) =>
-        item.type === "external" ? (
-          <Route
-            exact
-            path={item.path}
-            component={item.component}
-            name={item.name}
-            key={index}
-          />
-        ) : item.type === "submenu" ? (
-          item.children.map((subItem) => (
-            <Route
-              exact
-              path={`${item.path}${subItem.path}`}
-              component={subItem.component}
-              name={subItem.name}
-            />
-          ))
-        ) : (
-          <Route
-            exact
-            path={item.path}
-            component={item.component}
-            name={item.name}
-            key={index}
-          />
-        )
-      )}
-      <Redirect to="/404" />
+      {routes.items.map((item, index) => (
+        <Route
+          exact
+          path={item.path}
+          component={item.component}
+          name={item.name}
+          key={index}
+        />
+      ))}
     </Switch>
   );
 
