@@ -132,6 +132,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const CountButton = React.memo(function CountButton({ onClick, count }) {
+  console.log("CountButton Rendered");
+  return <button onClick={onClick}>{count}</button>;
+});
+
 const ProductCard = ({
   id,
   name,
@@ -142,8 +147,17 @@ const ProductCard = ({
   discount
 }) => {
   const classes = useStyles();
+
+  const [count1, setCount1] = React.useState(0);
+  const likeIncrement = React.useCallback(() => setCount1((c) => c + 1), []);
+
+  const [count2, setCount2] = React.useState(0);
+  const dislikeIncrement = React.useCallback(() => setCount2((c) => c + 1), []);
+
   return (
     <Card>
+      <CountButton count={count1} onClick={likeIncrement} />
+      <CountButton count={count2} onClick={dislikeIncrement} />
       <div className={classes.mediaGrid}>
         <figure className={classes.figure}>
           {sale && (
