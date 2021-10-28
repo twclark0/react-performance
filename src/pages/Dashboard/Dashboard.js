@@ -52,6 +52,11 @@ const Home = () => {
   const duplicateItems = (arr, numberOfRepetitions) =>
     arr.flatMap((i) => Array.from({ length: numberOfRepetitions }).fill(i));
 
+  const topProduct = React.useMemo(
+    () => data.sort((a, b) => b.progress - a.progress)[0],
+    []
+  );
+
   const chartMenu = (
     <Menu
       id="chart-menu"
@@ -85,6 +90,7 @@ const Home = () => {
       <Typography style={{ margin: "20px 0" }} variant="h4">
         Dashboard
       </Typography>
+      <p>This is the top product: {topProduct.name}</p>
       <Grid container spacing={1}>
         <Grid item xs={12} sm={6} md={3}>
           <StatCard
