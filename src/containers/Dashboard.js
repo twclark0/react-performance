@@ -55,7 +55,7 @@ const Dashboard = ({ history }) => {
   const [openSpeedDial, setOpenSpeedDial] = useState(false);
   const mediaMatcher = matchMedia(`(max-width: ${MobileBreakpoint}px)`);
   // TODO EX:2
-  // Add a new hook called useMouse.js as shown in the video and use the hook here
+  // Import hooks/useMouse.js & use it here as shown in the video.
 
   const resizeDispatch = () => {
     if (typeof Event === "function") {
