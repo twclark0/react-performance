@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const webpack = require("webpack");
 // TODO EX:6
+// Install `webpack-bundle-analyzer` using `yarn add --dev webpack-bundle-analyzer`
 // Import the webpack-bundle-analyzer using `require`
 const resolve = require("resolve");
 const PnpWebpackPlugin = require("pnp-webpack-plugin");
