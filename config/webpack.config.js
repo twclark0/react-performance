@@ -3,8 +3,8 @@
 const fs = require("fs");
 const path = require("path");
 const webpack = require("webpack");
-// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-//   .BundleAnalyzerPlugin;
+// TODO EX:6
+// Import the webpack-bundle-analyzer using `require`
 const resolve = require("resolve");
 const PnpWebpackPlugin = require("pnp-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -448,7 +448,8 @@ module.exports = function (webpackEnv) {
       ]
     },
     plugins: [
-      // new BundleAnalyzerPlugin(),
+      // TODO EX:6
+      // Add an instance of BundleAnalyzerPlugin in this array.
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
