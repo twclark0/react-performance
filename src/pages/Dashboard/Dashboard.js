@@ -193,7 +193,10 @@ const Home = () => {
         <Grid item xs={12} sm={12} md={12}>
           <NewsCard
             subtitle="Last updated 24 mins ago"
-            feed={duplicateItems(mockFeed, 1000)}
+            // TODO EX:4
+            // Change the number of repetitions from 1 to 1000 and see how it impacts the application load time
+            // and scroll experience.
+            feed={duplicateItems(mockFeed, 1)}
           />
         </Grid>
       </Grid>
