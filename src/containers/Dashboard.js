@@ -54,8 +54,8 @@ const Dashboard = ({ history }) => {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [openSpeedDial, setOpenSpeedDial] = useState(false);
   const mediaMatcher = matchMedia(`(max-width: ${MobileBreakpoint}px)`);
-  // TODO-EX:2
-  // Add a a new hook called useMouse.js as shown in the video and use the hook here
+  // TODO EX:2
+  // Add a new hook called useMouse.js as shown in the video and use the hook here
 
   const resizeDispatch = () => {
     if (typeof Event === "function") {
